@@ -1,0 +1,85 @@
+doctype html
+script(src='/assets/js/form.js')
+head
+    meta(property='og:title' content='Perfil - Bots In Discord')
+    meta(property='og:type' content='website')
+    meta(property='og:description' content='Veja seu perfil e bots neste link!')
+    meta(name='description' content='Bots in Discord, a bot list brasileira, completa, adicione seu bot aqui e veja ele crescer!')
+    meta(name='og:image' content='/assets/img/logo2.png')
+    meta(name='theme-color' content='#d2efe6')
+    meta(content='width=device-width, initial-scale=1.0' name='viewport')
+    
+
+title Perfil - Bots in Discord
+include ../includes/head.pug
+script(src="/assets/js/me.js")
+script(type='text/javascript').
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5fff4f81a9a34e36b96c21f5/1erukt54t';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+body
+  
+  include ../includes/nav.pug
+  #content
+    span.header
+      if (premium || adp)
+        img.usericons(src=userProfile.avatarURL({dynamic: true}))      
+        h1 #{userProfile.username}
+        
+      else
+        img.usericon(src=userProfile.avatarURL({dynamic: true}))
+        h1 #{userProfile.username}
+      if(userProfile)
+        .badge-holder
+            if (admin)
+                span.badge
+                    img(src='/assets/img/admin.png' title='Administrador do site')
+                    |  Administrador do site      
+                br
+                br
+        .badge-holder
+            if (premium || adp)
+                span.badge
+                    img(src='/assets/img/premium.png' title='Premium Member')
+                    |  Premium
+                    br
+                span
+                .input-holder
+                 input#aboutme.input(maxlength=max_summary_length type='text' placeholder=' ' value=person.about)
+                 .placeholder Sobre Você
+                 a.button(onclick='send()') Editar
+    br
+    a.button(href='/add') Adicione um bot
+    #cards
+               #long
+    each val, i in cards
+            div.large.card
+                img.icon(src=val.logo)
+                h2.title #{val.username}  
+                   a.likes(href=`/bots/like/${val.botid}`)
+                     i.far.fa-heart
+                       | #{val.likes || 0}
+                p.desc #{val.description}  
+                a.small.half.half-left.button(href=`/bots/${val.botid}`) Ver bot
+                a.small.half.half-right.button.button-red.delete(href="#confirm" data-id=val.botid data-name=val.username)
+                        |  Deletar
+
+                if (val.state == "deleted")
+                    a.small.button(href=`/bots/resubmit/${val.botid}/`) Reenviar bot
+
+                else
+                    a.small.button(href=`/bots/edit/${val.botid}/`) Editar bot
+                    
+                  
+                    
+    br 
+    
+    include ../includes/footer.pug
+
+

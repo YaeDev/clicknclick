@@ -1,0 +1,23 @@
+doctype html
+head
+title Sucesso - Bots in Discord
+include includes/head.pug
+script(type='text/javascript').
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5fff4f81a9a34e36b96c21f5/1erukt54t';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+body
+    include includes/nav.pug
+    #content
+        span.header
+            h1 Sucesso!
+            script(async='' src='//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=c6120204-9118-49bd-a069-d8e2db275c25')
+        a.button(href='javascript:history.back()') Voltar
+        a.button(href='/') Página Inicial
+    include includes/footer.pug

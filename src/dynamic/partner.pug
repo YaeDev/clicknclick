@@ -1,0 +1,28 @@
+doctype html
+head
+    meta(property='og:title' content="Parceria com #{bot.username} - Bots in Discord")  
+    meta(property='og:type' content='website')
+    meta(property='og:description' content="Parceria efetuada com #{bot.username}. Essa página redicionará você para a página de votos do site escolhido pelo dono.")
+    meta(name='og:image' content=`${bot.logo}`)
+    
+include includes/head.pug
+script(src='/assets/js/like.js')
+script(type='text/javascript').
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5fff4f81a9a34e36b96c21f5/1erukt54t';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+body
+    include includes/nav.pug
+    #content
+
+        span.header
+                img.usericon(src=bot.logo)
+                h1 #{bot.username}
+                p Parceria
+    include includes/footer.pug

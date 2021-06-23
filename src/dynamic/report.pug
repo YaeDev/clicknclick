@@ -1,0 +1,73 @@
+doctype html
+head
+    meta(property='og:title' content='Adicionar Bot')
+    meta(property='og:type' content='website')
+    meta(property='og:description' content='Adicione seu bot na Bots in Discord, lembre se de estar no SERVIDOR e estar LOGADO')
+    meta(name='description' content='Adicione seu bot na Bots in Discord, lembre se de estar no SERVIDOR e estar LOGADO')
+    meta(name='og:image' content='/assets/img/logo2.png')
+    meta(name='theme-color' content='#d2efe6')
+    meta(content='width=device-width, initial-scale=1.0' name='viewport')
+
+title Denunciar #{bot.username} - Bots in Discord
+include includes/head.pug
+script(src='/assets/js/form.js')
+link(rel="stylesheet" href="/assets/css/tags.css")
+script(src="https://www.google.com/recaptcha/api.js" async defer)
+  
+body
+    include includes/nav.pug
+    #content
+        span.header
+            h1 Denunciando #{bot.username}
+            //support
+            
+            p Você precisa estar em nosso servidor para reportar um bot, caso não esteja seu report será recusado 
+            p Para entrar no servidor clique no seu nome e em seguida em Entrar no Servidor
+            
+            p Preencha as peguntas abaixo e clique no botão Enviar, abaixo, aparecerá informações como ID, prefixo e descrição, confirme que eles batem com os dados do bot que deseja reportar.
+        br
+        form.center
+            .input-holder
+              input#botid.input(type='text' placeholder=' ' value=bot.botid readonly='')
+              .placeholder ID
+            br
+            .input-holder
+              input#prefix.input(type='text' placeholder=' ' value=bot.prefix readonly='')
+              .placeholder Prefixo
+            br
+            .input-holder
+              input#description.input(maxlength=max_summary_length type='text' placeholder=' ' value=bot.description readonly='')
+              .placeholder Summary
+            br
+            .input-holder
+              textarea#longdesc.input(rows='7' style="visibility:hidden" readonly='') #{bot.long}
+            br
+            .input-holder
+              select#tags(data-placeholder="Tags" style="visibility:hidden" disabled)
+                each tag of bot_tags
+                  if (bot.tags && bot.tags.includes(tag))
+                    option(selected) #{tag}
+                  else
+                    option #{tag}
+            br
+            .input-holder
+              if (bot.owners.primary == req.user.id)
+                input#owner-ids.input.xinput(type='text' placeholder=' ' style="visibility:hidden" value=String(bot.owners.additional.join(" ")))
+              else
+                input#owner-ids.input.xinput(type='text' placeholder=' ' value=String(bot.owners.additional.join(" ")) style="visibility:hidden" disabled)
+            br
+            .input-holder
+             select#topic(data-placeholder="Reason" multiple)
+               for topic in topics
+                option #{topic}
+            br
+            .input-holder
+                textarea#reason.input(minlength="3" maxlength="300" name="reason" type="text" placeholder="" rows="8" )
+                .placeholder Descrição da Denúncia
+            br
+            .center-inline.g-recaptcha(data-callback='update_token' data-sitekey=site_key data-theme=req.cookies["theme"] || "light")
+            a.button(onclick='report()') Reportar
+            a.button(href='javascript:history.back()') Voltar
+            br
+        br
+    include includes/footer.pug

@@ -1,0 +1,22 @@
+doctype html
+include includes/head.pug
+style.
+  body { font-family: 'Inconsolata', monospace;background-color: #303030;background-2: #4F6272;color: #DCE2F9;hover: #adfbff;rimary: #57F287;secondary: #FEE75C;button: #0095e6; }
+  #content { margin-top: 130px; width: 100%;}
+  h1 {margin: 13px 0;font-size: 58px !important;color: white;text-align: center; }
+  h2 {color: white !important;margin-bottom: 0;}
+  .button {overflow: hidden;font-size: 14px;padding: 8px 20px;margin-right: 12px;border-radius: 9px;border: 2px solid;text-decoration: none;font-weight: 500;position: relative;background: transparent;text-transform: uppercase;transition: all 400ms ease;cursor: pointer;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.26);color: #57F287;border-color: #0095e6;display: block;margin: 8px auto;text-align: center;width: 25%;}
+  .button::after {content: "";position: absolute;z-index: -4;background: #0095e6;}
+  .button:hover { color: white;}
+  
+body
+    include includes/nav.pug
+    #content
+
+        span.header
+            h1 Error 403 
+            p Forbidden
+        a.button(href='javascript:history.back()') Back
+        a.button(href='/') Home
+
+        br 

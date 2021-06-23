@@ -1,0 +1,93 @@
+doctype html
+head
+    meta(property='og:title' content='Adicionar Bot')
+    meta(property='og:type' content='website')
+    meta(property='og:description' content='Adicione seu bot na Bots in Discord, lembre se de estar no SERVIDOR e estar LOGADO')
+    meta(name='description' content='Adicione seu bot na Bots in Discord, lembre se de estar no SERVIDOR e estar LOGADO')
+    meta(name='og:image' content='/assets/img/logo2.png')
+    meta(name='theme-color' content='#d2efe6')
+    meta(content='width=device-width, initial-scale=1.0' name='viewport')
+
+title Seja Staff - Bots in Discord
+include includes/head.pug
+script(src='/assets/js/form.js')
+link(rel="stylesheet" href="/assets/css/tags.css")
+script(src="https://www.google.com/recaptcha/api.js" async defer)
+  
+body
+    include includes/nav.pug
+    #content
+        span.header
+            h1 Seja Staff!
+            //support
+            
+            p Você precisa estar em nosso servidor
+            p Lembre-se caso tenha uma dúvida contate um administrador ou um cargo maior no privado!
+            p Precisa estar dentro de TODOS os requisitos
+            
+
+            p Todas perguntas dessa sessão terão um tamanho MÁXIMO de 500 caracteres.
+        br
+        form.center
+            .input-holder
+             select#role(data-placeholder="Cargo")
+               for topic in topics
+                option #{topic}
+            br
+            span
+            .input-holder
+                input#staffid.input(maxlength="500" type="text" placeholder="" rows="8" )
+                .placeholder Seu ID
+            br
+            .input-holder
+                input#staffage.input(minlength="3" maxlength="500" type="text" placeholder="" rows="8" )
+                .placeholder Sua idade
+            br
+            .input-holder
+                textarea#stafflist.input(minlength="3" maxlength="500" type="text" placeholder="" rows="8" )
+                .placeholder Possuí Experiência em BotList? Quais BotList e quais posições?
+            br
+            .input-holder
+                input#staffref.input(minlength="3" maxlength="500" type="text" placeholder="" rows="8" )
+                .placeholder Como você conheceu a Bots in Discord? (Amigo, Divulgação, Parceria, Outros)
+            br
+            .input-holder
+                textarea#staffexp.input(minlength="3" maxlength="500" type="text" placeholder="" rows="8" )
+                .placeholder Por que quer ser staff da Bots in Discord?
+            br
+            h1 Mini-Quiz
+            p Esse quiz libera que você consulte o nosso servidor para encontrar as respostas para as perguntas, mas lembre de JUSTIFICAR sua resposta.
+            p Todas perguntas dessa sessão terão um tamanho MÁXIMO de 650 caracteres.
+            br
+            .input-holder
+                textarea#staffquiz.input(minlength="3" maxlength="650" type="text" placeholder="" rows="8" )
+                .placeholder Um bot possuí emojis epiléticos em seu bot. Você recusa ou aprova? Por que?
+            br
+            .input-holder
+                textarea#staffquiz2.input(minlength="3" maxlength="650" type="text" placeholder="" rows="8" )
+                .placeholder Como você revisa um bot? Quais etapas você faz, quais critérios são usados, etc.
+            br
+            .input-holder
+                textarea#staffquiz3.input(minlength="3" maxlength="650" type="text" placeholder="" rows="8" )
+                .placeholder O que você faria ao ver um membro da staff OFENDENDO um outro staff? Por que?
+            br
+            h1 Perguntas Específicas
+            p Responda se você se candidatou para MODERADOR, ADMINISTRADOR ou MANAGER. Aprovador NÃO precisa responder.
+            p Todas perguntas dessa sessão terão um tamanho MÁXIMO de 1000 caracteres.
+            br
+            .input-holder
+              textarea#staffadmin.input(minlength="3" maxlength="1000" type="text" placeholder="" rows="8" )
+              .placeholder Você ja administrou um servidor? Quais servidores? Quanto Tempo?
+            br
+            .input-holder
+              textarea#staffsuper.input(minlength="3" maxlength="1000" type="text" placeholder="" rows="8" )
+              .placeholder Você ja SUPERVISIONOU staffs? Se sim, como eram supervisionados?
+            br
+
+            .center-inline.g-recaptcha(data-callback='update_token' data-sitekey=site_key data-theme=req.cookies["theme"] || "light")
+            a.button(onclick='staff()') Enviar
+            a.button(href='javascript:history.back()') Voltar
+            br
+        br
+    include includes/footer.pug
+

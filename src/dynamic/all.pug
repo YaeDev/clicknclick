@@ -1,0 +1,55 @@
+doctype html
+head
+    meta(property='og:title' content='Click Me - Joke Website')
+    meta(property='og:type' content='website')
+    meta(property='og:description' content='When you click, it will show on my Discord | Quando você clicar, o status irá aparecer no meu Discord :)')
+    meta(name='description' content='When you click, it will show on my Discord | Quando você clicar, o status irá aparecer no meu Discord :)')
+    meta(name='og:image' content='/assets/img/logo2.png')
+    meta(name='theme-color' content='#d2efe6')
+    meta(content='width=device-width, initial-scale=1.0' name='viewport')
+
+title All Users
+include includes/head.pug
+style.
+ .card {
+  padding: 10px;
+  height: 463px; 
+  border: 0.5px solid #18191c;
+  box-shadow: 2px 3px 2px -1px #18191c;
+  margin: 30px;
+  display: inline-block;
+  width: calc(100vw / 4);
+  border-radius: 25px;
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+ }
+ .card:hover {
+  box-shadow: 2px 3px 2px -1px #FFFFFF;
+  transform: translateY(-0.30em);
+ }
+
+body
+    include includes/nav.pug
+    #content
+        span.header
+            h1 All Users
+            p
+                span.strikethrough Users who clicked at least 1 time
+        br
+    #cards
+               #long
+    each bot, i in cards
+                    div.card
+                      .banner(style=`background-image:url(${bot.background || 'https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg'})` bis_skin_checked='1')
+                        img.icon(src=`${bot.logo}`)
+                      br
+                      br
+                      h2.title #{bot.username}
+                        a.likes(href='')
+                          i.fas.fa-chevron-circle-up #{bot.perpats || 0}
+                      p.desc #{bot.about}
+                      br
+                      br
+                      a.buttonba.button(href=`/users/${bot.botid}` style='width:50%;') View Profile
+                      br
+
+

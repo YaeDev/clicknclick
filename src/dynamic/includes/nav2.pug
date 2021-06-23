@@ -1,0 +1,32 @@
+#alertTop 
+ n WE CREATED A BOT! ADD IT BY CLICKING ON INVITE ON MAIN PAGE!
+#navTop2
+    span.nav.link
+        img(src='/assets/img/logo.png')
+    span.navtag.keep
+        a(href="/")
+            span.navtext.keep Home
+    span.navtag.keep
+        a(href="/terms")
+            span.navtext.keep Terms
+    span.navtag.keep
+        a(href="/changelog")
+            span.navtext.keep Changelog     
+    if(user)
+     span.navtag.keep
+      a(href="/users/edit/" + user.id)
+        span.navtext.keep Edit info
+    span.dropdown  
+        if (user)
+            img.navicon(src=users.avatarURL({dynamic: true}))
+            a#login.navtag2.keep(href='/') #{user.username}##{user.discriminator} 
+              i.fas.fa-chevron-down
+            span.dd-content
+                a(href='/logout') Logout
+                br
+
+        else
+          a#login.navtag2.keep(href='/login') Login       
+
+        
+

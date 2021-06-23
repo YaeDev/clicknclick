@@ -1,0 +1,46 @@
+doctype html
+head
+    meta(property='og:title' content='Pesquisar - Bots In Discord')
+    meta(property='og:type' content='website')
+    meta(property='og:description' content='Bots in Discord, a bot list brasileira, completa, adicione seu bot aqui e veja ele crescer!')
+    meta(name='description' content='Bots in Discord, a bot list brasileira, completa, adicione seu bot aqui e veja ele crescer!')
+    meta(name='og:image' content='/assets/img/logo2.png')
+    meta(name='theme-color' content='#d2efe6')
+    meta(content='width=device-width, initial-scale=1.0' name='viewport')
+
+title Edit
+
+body
+    include includes/nav.pug
+    #content
+        span.header
+            h1 Edit your inof
+
+            #amzn-assoc-ad-8466be97-6b87-4694-9dc3-2db0f2995b83
+            script(async='' src='//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=8466be97-6b87-4694-9dc3-2db0f2995b83')
+            p
+                span.strikethrough Todos os bots da Bots in Discord
+        br
+        .tags2
+                each tag in bot_tags
+                  li
+                    a.bot-tag2(href=`/tag/${tag}`) #{tag}
+    #cards
+               #long
+    each val, i in cards
+                    div.card
+                        img.icon(src=val.logo)
+                        h2.title #{val.username}
+                           a.likes(href=`/bots/like/${val.botid}`)
+                            i.far.fa-heart
+                               | #{val.likes || 0}
+                        p.desc #{val.description}
+                        a.small.button(href=`/bots/${val.botid}`) Ver informações do bot
+    script.
+        const node = document.getElementById("searchbar");
+        node.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+        location.href = `/bots/search/?q=${node.value}`
+        }
+        });
+    include includes/footer.pug

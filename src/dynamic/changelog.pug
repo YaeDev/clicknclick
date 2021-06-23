@@ -1,0 +1,64 @@
+doctype html
+include includes/head.pug
+script(src='/assets/js/like.js')
+script(src='/assets/js/form.js')
+
+script(src="https://www.google.com/recaptcha/api.js" async defer)
+body(onload="load()")
+ include includes/nav.pug
+ #content
+
+  span.header
+   h1 Changelog
+   p  All changes will be logged here
+   br
+   h2 Current version: v1.2.0 Stable
+   p Canary version: v1.2.1 Alpha
+   
+   
+   h1 v1.2.0 Changes
+   br
+   br
+   p Introducing "Captain". With a captain, you can get a click multiplier that your captain chooses! It can be from 1 to 5!
+   p To get a captain, go to the user's profile, click on "Make Captain" and confirm it!
+   p You can remove the captain on your edit page.
+   p You can increase or decrease the multiplier on Edit Page.
+   br
+   p Now you can have a profile page. In the future, we are going to add some new features on it, be pacient!
+   br
+   p As always, we fixed some bugs on the website.
+   br
+   br
+   h1 v1.1.8 Changes
+   br
+   br
+   p Now, when using the website or doing any actions, you need to accept our Terms of Service
+   br   
+   p As always, we fixed some bugs on the website.
+   br
+   br
+   h1 v1.1.5 Changes
+   br
+   br
+   p Introducing profile banner! With profile banner, you can use it to make your profile better!
+   p Introducing about me feature! With about me, you can describe yourself, or just put random sentences.
+   br
+   p Leaderboard! Now the top 3 clickers will appear on the home page!
+   br
+   p Bug fixes.
+   br
+   br
+   h1 v1.1.5 Changes
+   br
+   br
+   p Multiple clicks! Now you can use multiple clicks to click 500 times in one click!
+   p Multiple clicks has a 15 minute cooldown, so you can't spam it
+   br
+   p Login is now required when clicking.
+   br
+   p Bug fixes.
+   br
+   br
+   a.button(href='/') Home
+   br
+   br

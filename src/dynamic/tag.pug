@@ -1,0 +1,48 @@
+doctype html
+head
+    meta(property='og:title' content='Pesquisar - Bots In Discord')
+    meta(property='og:type' content='website')
+    meta(property='og:description' content='Bots in Discord, a bot list brasileira, completa, adicione seu bot aqui e veja ele crescer!')
+    meta(name='description' content='Bots in Discord, a bot list brasileira, completa, adicione seu bot aqui e veja ele crescer!')
+    meta(name='og:image' content='/assets/img/logo2.png')
+    meta(name='theme-color' content='#d2efe6')
+    meta(content='width=device-width, initial-scale=1.0' name='viewport')
+
+title #{req.params.tag} - Bots in Discord
+include includes/head.pug
+script(type='text/javascript').
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5fff4f81a9a34e36b96c21f5/1erukt54t';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+body
+    include includes/nav.pug
+    #content
+        span.header
+            h1 #{req.params.tag}
+            p
+        br
+    #cards
+               #long
+    each val, i in cards
+                    div.card
+                        img.icon(src=val.logo)
+                        h2.title #{val.username}
+                           a.likes(href=`/bots/like/${val.botid}`)
+                            i.far.fa-heart
+                               | #{val.likes || 0}
+                        p.desc #{val.description}
+                        a.small.button(href=`/bots/${val.botid}`) Ver informações do bot
+    script.
+        const node = document.getElementById("searchbar");
+        node.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+        location.href = `/bots/search/?q=${node.value}`
+        }
+        });
+    include includes/footer.pug

@@ -1,0 +1,47 @@
+doctype html
+head
+
+    meta(property='og:title' content=bot.username + " - Click n' Click")  
+    meta(property='og:type' content='website')
+    meta(property='og:description' content=bot.description)
+    meta(name='description' content=bot.description)
+    meta(name='og:image' content=bot.logo)
+    meta(name='theme-color' content='#d2efe6')
+    meta(content='width=device-width, initial-scale=1.0' name='viewport')
+
+title #{bot.username} - Click n' Click
+include includes/head.pug
+body
+
+    include includes/nav.pug
+    #content
+        if (bot.nsfw)
+            #img-holder
+                img#bot-icon.nsfw(width='180px' height='180px' src=bot.logo)
+
+        else
+            #img-holder
+                img#bot-icon(width='180px' height='180px' src=bot.logo)
+        h2.right(style='display: inline;')
+            | #{bot.username}
+            a.likes()
+             i.fas.fa-chevron-circle-up #{bot.perpats || 0}
+        if(bot.botid == '700805591094001692')
+         p This user is an Website Admin, if someone isn't a Website Admin but is impersonating one, report it to our team.
+        .right.summary(style='margin-top: 10px;') #{bot.about || 'Nothing Provided'}
+        .right.buttons-case(style='margin-top: 20px;')
+        .input-holder
+          if(req.user)
+           if (bot.botid === req.user.id)
+            .buttons-case
+             a.bot-btns.button(href=`/users/edit/${bot.botid}/`) Edit
+          .buttons-case
+           a.bot-btns.button(href=`/users/captain/${bot.botid}`) Make Captain
+             .bot.buttons
+                if (bot.support)
+                    a.small-link(target='_blank' href=bot.support) Primary Discord
+
+          br
+          #long
+                span.markdown-body !{desc}
+    br      

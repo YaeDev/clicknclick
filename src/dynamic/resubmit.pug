@@ -1,0 +1,67 @@
+  doctype html
+head
+
+title Reenviar #{bot.username} - Bots in Discord
+include includes/head.pug
+script(src='/assets/js/form.js')
+script(src="https://www.google.com/recaptcha/api.js" async defer)
+script(type='text/javascript').
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5fff4f81a9a34e36b96c21f5/1erukt54t';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+body
+    include includes/nav.pug
+    #content
+      span.header
+        h1 Reenviar 
+        p Você pode editar seu bot ou encontrar o token de autorização do seu bot abaixo.
+      br
+         form.center
+            .input-holder
+                input#botid.input(type='text' placeholder=' ')
+                .placeholder ID do bot
+            br
+            .input-holder
+                input#prefix.input(type='text' placeholder=' ')
+                .placeholder Prefixo
+            br
+            .input-holder
+                input#description.input(maxlength='120' type='text' placeholder=' ')
+                .placeholder Resumo
+            br
+            .input-holder
+                input#invite.input(type='text' placeholder=' ')
+                .placeholder Convite personalizado
+            br
+            .input-holder
+              input#support.input(type='text' placeholder=' ')
+              .placeholder Servidor de Suporte
+            br
+            .input-holder
+                textarea#longdesc.input(rows='7')
+                .textarea-placeholder Descrição
+            br
+            .input-holder
+              select#tags(data-placeholder="Tags" multiple)
+                each tag of bot_tags
+                    option #{tag}
+            br
+            .input-holder
+                input#note.input(maxlength=max_summary_length type='text' placeholder=' ')
+                .placeholder Nota para o verificador
+            br
+            .input-holder
+                input#owner-ids.input.xinput(type='text' placeholder=' ')
+                .placeholder IDs de donos adicionais
+            br
+            .center-inline.g-recaptcha(data-callback='update_token' data-sitekey=site_key data-theme=req.cookies["theme"] || "light")
+            a.button(onclick='submit()') Enviar
+            br
+          
+    include includes/footer.pug

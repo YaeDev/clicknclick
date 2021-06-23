@@ -1,0 +1,22 @@
+doctype html
+include includes/head.pug
+script(src='/assets/js/like.js')
+script(src='/assets/js/form.js')
+head
+
+
+script(src="https://www.google.com/recaptcha/api.js" async defer)
+body
+    include includes/nav.pug
+    #content
+
+        span.header
+            if(!req.user)
+              h1 Faça login com sua conta do Discord
+              br
+              a.button(href='/login') Login
+            if(req.user)
+                p Você só pode votar a cada 12 horas.
+                span.center
+                    a.owner.button()#like Votar
+    include includes/footer.pug

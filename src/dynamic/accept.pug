@@ -1,0 +1,169 @@
+doctype html
+script(src='/assets/js/form.js')
+link(rel="stylesheet" href="/assets/css/tags.css")
+
+head
+    meta(property='og:title' content=userProfile.username + " - Bots in Discord")
+    meta(property='og:type' content='website')
+    meta(property='og:description' content='Veja o perfil de ' + userProfile.username + ' na Bots in Discord')
+    meta(name='description' content='Veja o perfil de ' + userProfile.username + ' na Bots in Discord')
+    meta(name='og:image' content=userProfile.avatarURL({dynamic: true}))
+    meta(name='theme-color' content='#d2efe6')
+    meta(content='width=device-width, initial-scale=1.0' name='viewport')
+title #{userProfile.username}
+include ./includes/head.pug
+script(type='text/javascript').
+script.
+  function myFunction() {
+    var checkBox = document.getElementById("myCheck");
+    var text = document.getElementById("terms");
+     if (checkBox.checked == true){
+     text.value = "true";
+     } else {
+     text.value = "false";
+    }
+  }
+    function newpass() {
+
+    let form_items = ["terms"]
+    let data = {}
+    for (let form_item of form_items) {
+        data[form_item] = $(`#${form_item}`).val()
+    }
+
+   let method = "PATCH";
+    fetch(`/api/terms/826507789312327781`, {
+        method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(body => body.json()).then(body => {
+        if (!body.success) {
+            let opts = {
+                type: "error",
+                text: body.message,
+                theme: "sunset",
+                timeout: 3500
+            }
+            if (body.button) {
+                opts.buttons = [
+                    Noty.button(body.button.text, 'btn btn-success', function () {
+                        location.href = body.button.url
+                    }),
+                ]
+            }
+            new Noty(opts).show();
+        } else {
+            if (location.href.includes("/bots/edit")) location.href = `/bots/${data.id}`;
+            else location.href = "/"
+        }
+    })
+  }
+  
+style.
+  .container {
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .checkbox {
+    width: 100%;
+    margin: 15px auto;
+    position: relative;
+    display: block;
+  }
+
+  .checkbox input[type="checkbox"] {
+    width: auto;
+    opacity: 0.00000001;
+    position: absolute;
+    left: 0;
+    margin-left: -20px;
+  }
+  .checkbox label {
+    position: relative;
+  }
+  .checkbox label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 4px;
+    width: 22px;
+    height: 22px;
+    transition: transform 0.28s ease;
+    border-radius: 3px;
+    border: 2px solid #7bbe72;
+  }
+  .checkbox label:after {
+  content: '';
+    display: block;
+    width: 10px;
+    height: 5px;
+    border-bottom: 2px solid #7bbe72;
+    border-left: 2px solid #7bbe72;
+    -webkit-transform: rotate(-45deg) scale(0);
+    transform: rotate(-45deg) scale(0);
+    transition: transform ease 0.25s;
+    will-change: transform;
+    position: absolute;
+    top: 12px;
+    left: 10px;
+  }
+  .checkbox input[type="checkbox"]:checked ~ label::before {
+    color: #7bbe72;
+  }
+
+  .checkbox input[type="checkbox"]:checked ~ label::after {
+    -webkit-transform: rotate(-45deg) scale(1);
+    transform: rotate(-45deg) scale(1);
+  }
+
+  .checkbox label {
+    min-height: 34px;
+    display: block;
+    padding-left: 40px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+    vertical-align: sub;
+  }
+  .checkbox label span {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .checkbox input[type="checkbox"]:focus + label::before {
+    outline: 0;
+  }
+
+body
+  include ./includes/nav.pug
+  #content
+    span.header
+        img.usericon(src=userProfile.avatarURL({dynamic: true}))
+        h1 #{usering.username}
+        p Accept the Terms of Service to continue using the website
+        form.center
+           .input-holder
+             br
+             .container
+                  .checkbox
+                   input#myCheck(type='checkbox' onclick='myFunction()')
+                   label(for='myCheck') 
+                    .text I agree to Discord Terms of Service and agree to Click n' Click 
+                     a(href='https://clicknclick.xyz/terms' rel='external nofollow noopener' target='_blank') Terms of Service
+             input#terms.input(type='text' placeholder=' ' value='false' style="visibility:hidden")
+             a.button(onclick='newpass()') Accept
+        h2 Why we need your permission?
+        p Click n' Click always want your fun, but wants to keep our transparency and your security always in first place
+        p When you agree to our terms, you know that we store your Discord Information, and you are following Discord Terms of Service.
+        br
+        h2 I need to worry about that?
+        p You don't need to worry about that, we just want to make sure we don't get in trouble.
+        br
+        .text REMEMBER! CLICK N' CLICK DON'T STORE PRIVACY INFORMATION (IP ADDRESS, DISCORD TOKEN, HWID). WE WILL NEVER ASK YOU THIS TYPE OF INFORMATION!
+
+

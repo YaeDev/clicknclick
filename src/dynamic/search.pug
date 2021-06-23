@@ -1,0 +1,49 @@
+doctype html
+head
+    meta(property='og:title' content='Search')
+    meta(property='og:type' content='website')
+    meta(property='og:description' content='Click n\' Click | Made by Hiroshi#0100')
+    meta(name='description' content='Click n\' Click | Made by Hiroshi#0100')
+    meta(name='og:image' content='/assets/img/logo.png')
+    meta(name='theme-color' content='#d2efe6')
+    meta(content='width=device-width, initial-scale=1.0' name='viewport')
+
+title User Search
+include includes/head.pug
+body
+    include includes/nav.pug
+    #content
+        span.header
+            h1 Search
+            p
+                span.strikethrough Search for Users
+        br
+        .input-holder
+            input#searchbar.input(type='text' placeholder='Search Here')
+            br
+            if (cards.length == 0)
+                h1 No one found
+            else
+    #cards
+               #long
+    each val, i in cards
+                    div.card
+                      .banner(style=`background-image:url(${val.background || 'https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg'})` bis_skin_checked='1')
+                        img.icon(src=`${val.logo}`)
+                      br
+                      br
+                      h2.title #{val.username}
+                        a.likes(href='')
+                          i.fas.fa-chevron-circle-up #{val.perpats || 0}
+                      p.desc #{val.about}
+                      br
+                      br
+                      a.buttonba.button(href=`/users/${val.botid}` style='width:50%;') View Profile
+                      br
+    script.
+        const node = document.getElementById("searchbar");
+        node.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+        location.href = `/users/search/?q=${node.value}`
+        }
+        });
