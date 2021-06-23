@@ -1,0 +1,64 @@
+{
+    "prefix": "bid",
+    "mongo_url": "mongodb+srv://pats:1234@cluster0.haaah.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "server": {
+        "id": "744965529902514247",
+        "invite": "https://discord.gg/ZbXqFEw",
+        "mod_log_id": "755449144725995580",
+        "like_log": "755449144725995580",
+        "admin_user_ids": ["700805591094001692", "395592015611428864"],
+        "role_ids": {
+            "bot": "755449096990621818",
+            "unverified": "755449097988866259",
+            "verified": "755449096990621818",
+            "unmuted": "755449096990621818",
+
+            "bot_developer": "744985388279529482",
+            "bot_verifier": "748602849503477863"
+        }
+    },
+    "bot_options": {
+        "bot_tags": ["Música", "Economia", "Diversão", "Jogos", "Minijogos", "Moderação", "Anime", "Fortnite", "LOL", "ROBLOX", "Dashboard", "Utilidades", "Social", "Entretenimento", "Minecraft", "Javascript", "Python", "DBD.js","Kotlin", "Java", "Outros"],
+        "max_bot_tags": 6,
+        "max_owners_count": 4,
+        "max_summary_length": 90,
+        "min_description_length": 30,
+        "max_description_length": 5000
+    },
+            "languages": {
+                "en": {
+                    "strings": {
+                        "btn-yes": "sim",
+                        "btn-no": "não"
+                    }
+                },
+                "pt": {
+                    "strings": {
+                        "btn-yes": "sim",
+                        "btn-no": "não"
+                    }
+                },
+                "de": {
+                    "strings": {
+                        "btn-yes": "sim",
+                        "btn-no": "não"
+                    }
+                }
+            },
+    "discord_client": {
+        "id": "826507789312327781",
+        "secret": "TsKQt5Ubjw2CmSubyok1_0ijbAkqTg1H",
+        "token": "ODI2NTA3Nzg5MzEyMzI3Nzgx.YGNfXA.iLuNng3k6_6hXOzU1xyzWzoUxoM",
+        "prefix": "c!"
+    },
+    "web": {
+        "domain_with_protocol": "https://clicknclick.xyz",
+        "port": 0,
+        "ratelimit": 15,
+          "recaptcha_v2": {
+            "site_key": "6LcclBAaAAAAABsg-TT4hr7vsdq7ULjh-JFR7n0h",
+            "secret_key": "6LcclBAaAAAAAOzxSL83kU5aCrcJ_u5orhr9djQN"
+
+        }
+    }
+}
