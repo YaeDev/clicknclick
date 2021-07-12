@@ -48,7 +48,7 @@
     "discord_client": {
         "id": "826507789312327781",
         "secret": "TsKQt5Ubjw2CmSubyok1_0ijbAkqTg1H",
-        "token": "ODI2NTA3Nzg5MzEyMzI3Nzgx.YGNfXA.iLuNng3k6_6hXOzU1xyzWzoUxoM",
+        "token": "ODI2NTA3Nzg5MzEyMzI3Nzgx.YGNfXA.r0O2s6OkoeamL1iwNxvjZplOjoQ",
         "prefix": "c!"
     },
     "web": {
@@ -56,8 +56,8 @@
         "port": 0,
         "ratelimit": 15,
           "recaptcha_v2": {
-            "site_key": "6LcclBAaAAAAABsg-TT4hr7vsdq7ULjh-JFR7n0h",
-            "secret_key": "6LcclBAaAAAAAOzxSL83kU5aCrcJ_u5orhr9djQN"
+            "site_key": "6LfjwFEbAAAAANWoJRbLI2DllQfYI8vsJGzc1ws8",
+            "secret_key": "6LfjwFEbAAAAAAk7oODNBXH7LB_f_KMFr1eIz_jq"
 
         }
     }

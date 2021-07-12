@@ -26,6 +26,7 @@ module.exports = class extends Command {
         let users = await Users.findOne({ userid: message.author.id })
         if(!args[1]) return message.channel.send('Add a number from 1 to 500')
         if(args[1] < 1 || args[1] > 500 ) return message.channel.send('Invalid number!')
+        if(isNaN(args[1])) return message.channel.send('Invalid Number!')
         if (users && (Date.now() - users.date.getTime()) < 900000) {         
       var tempo = moment.duration.format([moment.duration((parseInt(users.date.getTime()) +  900000) - Date.now())], 'd [Days], h [Hours], m [Minutes], s [Seconds]')
       return message.channel.send(`Wait more ${tempo} to multiple click again.`)

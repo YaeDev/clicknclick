@@ -16,9 +16,9 @@
      span.navtag.keep
       a(href="/users/edit/" + user.id)
         span.navtext.keep Edit info
+
     span.dropdown  
         if (user)
-            img.navicon(src=users.avatarURL({dynamic: true}))
             a#login.navtag2.keep(href='/') #{user.username}##{user.discriminator} 
               i.fas.fa-chevron-down
             span.dd-content

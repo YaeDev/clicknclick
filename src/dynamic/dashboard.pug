@@ -1,0 +1,43 @@
+doctype html
+head
+include includes/head.pug
+script(src="/assets/js/admin.js")
+link(rel="stylesheet" href="/assets/css/table.css")
+body
+  include includes/nav.pug
+  #content
+    span.header
+        h1 Guild Manager
+    #bots-list
+        br
+        h5 Guilds you own
+        table
+            thead
+                tr
+                th(scope='col') Guild Name
+                th(scope='col') Guild ID
+                th(scope='col') Guild options
+            tbody.bots-list-body
+                if (bots)
+                    each val in bots
+                        if(val.owner == false) 
+                         span
+                        else
+                         tr
+                            td
+                             if(val.icon)
+                                img.rounded-circle(src=`https://cdn.discordapp.com/icons/${val.id}/${val.icon}.png`, alt=`${val.name}`)
+                                |      #{val.name}
+                             else
+                                img.rounded-circle(src=`https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png`, alt=`${val.name}`)
+                                |      #{val.name}
+                            if(req.app.get("client").guilds.cache.get(val.id))        
+                             td #{val.id}
+                            else
+                             td Bot not added   
+                            if(!req.app.get("client").guilds.cache.get(val.id))    
+                             td
+                                a.btn.btn-primary.pad-right(target="__blank" href=`https://discord.com/oauth2/authorize?client_id=826507789312327781&scope=bot&permissions=268749944&redirect_uri=https%3A%2F%2Fclicknclick.xyz%2Fguilds`) Invite Bot
+                            else    
+                             td
+                                a.btn.btn-primary.pad-right(target="__blank" href=`/guilds/dashboard/${val.id}`) Settings

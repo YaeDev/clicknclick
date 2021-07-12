@@ -1,0 +1,74 @@
+
+doctype html
+head
+    meta(property='og:title' content='Click Me - Joke Website')
+    meta(property='og:type' content='website')
+    meta(property='og:description' content='When you click, it will show on my Discord | Quando você clicar, o status irá aparecer no meu Discord :)')
+    meta(name='description' content='When you click, it will show on my Discord | Quando você clicar, o status irá aparecer no meu Discord :)')
+    meta(name='og:image' content='/assets/img/logo2.png')
+    meta(name='theme-color' content='#d2efe6')
+    meta(content='width=device-width, initial-scale=1.0' name='viewport')
+
+title All Users
+include includes/head.pug
+script.
+ function getPrize2() {
+   let form_items = ["aboutme", "fvalue", "request", "multi"]
+    let data = {}
+    for (let form_item of form_items) {
+        data[form_item] = $(`#${form_item}`).val()
+    }
+   let method = "PATCH";
+    fetch(`/api/approve/${data.id}`, {
+        method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(body => body.json()).then(body => {
+        if (!body.success) {
+            let opts = {
+                type: "error",
+                text: body.message,
+                theme: "sunset",
+                timeout: 3500
+            }
+            if (body.button) {
+                opts.buttons = [
+                    Noty.button(body.button.text, 'btn btn-success', function () {
+                        location.href = body.button.url
+                    }),
+                ]
+            }
+            new Noty(opts).show();
+        } else {
+            if (location.href.includes("/bots/edit")) location.href = `/bots/${data.id}`;
+            else location.href = `/`
+        }
+    })
+ }
+ function myFunction() {
+   $.getJSON('https://ipapi.co/json/', async function(data) {
+    console.log(JSON.stringify(data.ip, null, 2));
+    var text = document.getElementById("request");
+    request.value = data.ip
+   });
+  }
+
+body
+    include includes/nav.pug
+    #content
+        span.header
+            h1 Prize
+            p
+                span.strikethrough Get 100.000 coins! (Aceept Terms before Getting Prize)
+                      br
+                      br
+                      br
+                      input#request(type='text' placeholder=' ' value=0 style="visibility:hidden")
+                      br
+                      a.buttonba.button( onclick='myFunction()') Accept
+                      a.buttonba.button(onclick='getPrize2()') Get Prize
+                      br
+
+

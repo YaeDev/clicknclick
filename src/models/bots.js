@@ -20,7 +20,25 @@ const botsSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  wins: {
+  type: Number,
+  },
+  loses: {
+  type: Number,
+  },
+  earned: {
+  type: Number,
+  },
+  tg: {
+  type: Number,
+  },
   lastperson: {
+    type: String,
+  },
+  ip: {
+    type: String,
+  },
+  chnId: {
     type: String,
   },
   captain: {
@@ -46,6 +64,15 @@ const botsSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
+  },
+  dailydt: {
+    type: Date,
+  },
+  coins: {
+    type: Number,
+  },
+  amount: {
+    type: Number,
   },
   background: {
   type: String,

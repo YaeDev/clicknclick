@@ -311,11 +311,13 @@ body
                  .placeholder About Me
                 br
                 .input-holder
-                 input#fvalue.input(type='text' placeholder=' '  value=`${bot.background}`)
-                 .placeholder Background (URL)
+                 input#fvalue.input(type='text' value=`${bot.background}`)
+                 .placeholder Background Image (GIF Supported)
+                h5 From now, you need to use our
+                 a(href=`https://uploads.clicknclick.xyz/`) Upload Center
                  br
                 .input-holder
-                 input#fvalue.input(type='text' placeholder=' '  value=`${bot.captain || 'No one'}` readonly)
+                 input#fcap.input(type='text' placeholder=' '  value=`${bot.captain || 'No one'}` readonly)
                  .placeholder Your captain
                  br
                  .quantity

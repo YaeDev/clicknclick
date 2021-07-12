@@ -28,7 +28,6 @@ const { web: {port}, discord_client: {token}, mongo_url } = require("@root/confi
       bots.forEach(async bot => {
          let botUser = await client.users.fetch(bot.botid);
          await Bots.updateOne({ botid: bot.botid }, { $set: { logo: `https://cdn.discordapp.com/avatars/${bot.botid}/${botUser.avatar}.png?size=256`} })
-
    })
   }, 120000)
 })()
