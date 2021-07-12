@@ -9,12 +9,16 @@ const staff = require("@routes/api/staff");
 const user = require("@routes/api/user");
 const auth = require("@routes/api/auth");
 const avatar = require("@routes/api/avatar");
+const newbet = require("@routes/api/newbet");
 const embed = require("@routes/api/embed");
 const theme = require("@routes/api/theme");
 const pass =  require("@routes/api/pass");
 const cpass =  require("@routes/api/cpass");
 const callback = require("@routes/api/callback");
+const dashboard = require("@routes/api/dashboard");
+const approve = require("@routes/api/approve");
 const terms = require("@routes/api/terms");
+const daily = require("@routes/api/daily");
 
 const route = Router();
 route.use(bodyParser.urlencoded({ extended: false }))
@@ -30,9 +34,13 @@ route.use(function (_, res, next) {
 
 route.use("/bots", bots);
 route.use("/terms", terms);
+route.use("/dashboard", dashboard);
+route.use("/newbet", newbet);
+route.use("/approve", approve);
 route.use("/admin", admin);
 route.use("/like", like)
 route.use("/pass", pass);
+route.use("/daily", daily);
 route.use("/cpass", cpass);
 route.use("/report", report)
 route.use("/staff", staff)

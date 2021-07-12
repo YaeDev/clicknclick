@@ -104,6 +104,46 @@ let method = "PATCH";
     })
 }
 
+function dashboard() {
+
+    let form_items = ["botid", "prefix"]
+    let data = {}
+    for (let form_item of form_items) {
+        data[form_item] = $(`#${form_item}`).val()
+    }
+
+    data["id"] = data["botid"];
+
+    let method = "PATCH"
+    fetch(`/api/dashboard/${data.id}`, {
+        method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(body => body.json()).then(body => {
+        if (!body.success) {
+            let opts = {
+                type: "error",
+                text: body.message,
+                theme: "sunset",
+                timeout: 3500
+            }
+            if (body.button) {
+                opts.buttons = [
+                    Noty.button(body.button.text, 'btn btn-success', function () {
+                        location.href = body.button.url
+                    }),
+                ]
+            }
+            new Noty(opts).show();
+        } else {
+            if (location.href.includes("/guilds/dashboard")) location.href = `/guilds/dashboard/${data.id}`;
+            else location.href = "/success"
+        }
+    })
+}
+
 function send() {
 
     let form_items = ["aboutme", "fvalue"]

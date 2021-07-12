@@ -22,6 +22,7 @@ route.patch("/:id", auth, async (req, res) => {
     if(data.multi > 5) return res.json({ success: false, message: "Multiplier can't be higher than 5!" })
     if(data.multi < 1) return res.json({ success: false, message: "Multiplier can't be smaller than 1!" })
     if(data.aboutme.length > 55) return res.json({ success: false, message: "About me is too long!" })
+    if(!data.fvalue.startsWith("https://uploads.clicknclick.xyz/"))
   const bot = await Bots.findOne({ botid: req.params.id }, { _id: false })
   
   await Bots.updateOne({ botid: req.user.id }, { $set: { about:  data.aboutme } }, { upsert: true })

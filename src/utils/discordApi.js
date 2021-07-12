@@ -32,8 +32,9 @@ module.exports.auth = async (req, res, next) => {
 };
 module.exports.getUser = async user => {
   let { accessToken } = user;
+  console.log(accessToken)
 
-  user = await fetch(`https://discord.com/api/users/@me`, {
+  user = await fetch(`https://discord.com/api/users/@me/guilds`, {
     headers: {
       Authorization: `Bearer ${accessToken}`
     }

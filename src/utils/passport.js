@@ -3,7 +3,7 @@ const passport = require('passport');
 
 const { web: {domain_with_protocol}, discord_client: {id, secret} } = require("@root/config.json");
  
-var scopes = ['identify'];
+var scopes = ['identify', 'guilds'];
  
 passport.use(new Strategy({
     clientID: id,

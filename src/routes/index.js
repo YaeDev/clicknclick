@@ -2,6 +2,8 @@ const { Router } = require("express");
 
 const tag = require("@routes/tag/index");
 const bots = require("@routes/bots/index");
+const bets = require("@routes/bets/index");
+const guilds = require("@routes/guilds/index");
 const api = require("@routes/api/index");
 const theme = require("@routes/api/theme");
 const Bots = require("@models/bots")
@@ -9,6 +11,8 @@ const route = Router();
 const { auth } = require("@utils/discordApi");
 
 route.use("/users", bots);
+route.use("/bets", bets);
+route.use("/guilds", guilds);
 route.use("/api", api);
 route.use("/theme", theme);
 
